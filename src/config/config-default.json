@@ -1,0 +1,9 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "network": "goerli",
+  "beaconNodeAddr": "",
+  "executionLayerAddr": "",
+  "privateKey": ""
+}

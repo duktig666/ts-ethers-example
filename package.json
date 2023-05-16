@@ -1,0 +1,64 @@
+{
+  "name": "ts-ethers-example",
+  "version": "0.0.1",
+  "description": "ts-ethers-example",
+  "author": "duktig666",
+  "repository": "",
+  "license": "MIT",
+  "keywords": [
+    "ts",
+    "ethers",
+    "eth",
+    "ethereum",
+    "contract"
+  ],
+  "main": "./dist/tsc/src/main.js",
+  "types": "./dist/tsc/src/main.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "dev": "ts-node src/main.ts --config src/config/config-dev.json",
+    "start": "node --es-module-specifier-resolution=node ./dist/tsc/main.js --config src/config/config-dev.json",
+    "test": "jest --config src/config/config-dev.json",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "clean": "rm -rf dist build package",
+    "ts-node": "ts-node",
+    "watch": "tsc --watch",
+    "build": "tsc -p tsconfig.json",
+    "build-all": "yarn clean && yarn build",
+    "docs": "typedoc"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@types/crypto-js": "^4.1.1",
+    "@types/node": "^15.14.9",
+    "@types/web3": "^1.2.2",
+    "@types/yargs": "^17.0.17",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "jest": "^29.3.1",
+    "merkletreejs": "^0.3.9",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.23.23",
+    "typescript": "^4.6.4",
+    "web3": "^1.8.1"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.2",
+    "@types/jest": "^29.2.4",
+    "assert": "^2.0.0",
+    "axios": "^1.2.2",
+    "crypto-js": "^4.1.1",
+    "ethers": "^5.6.9",
+    "tslib": "^2.4.1",
+    "winston": "^3.8.2",
+    "yargs": "^17.6.2"
+  },
+  "licenses": [
+    {
+      "GPL": "SEE LICENSE IN LICENCE FILE"
+    }
+  ]
+}
