@@ -8,7 +8,8 @@ async function sign() {
 
     const signatureBytes = ethers.utils.arrayify(signature);
 
-    console.log("message:",message)
+    console.log("address:", wallet.address)
+    console.log("message:", message)
     console.log("signature:",signature)
     console.log("signatureBytes:",signatureBytes)
 }
