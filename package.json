@@ -22,6 +22,7 @@
     "start": "node --es-module-specifier-resolution=node ./dist/tsc/main.js --config src/config/config-dev.json",
     "example-multicall": "ts-node src/examples/multicall/ethersMulticall.ts --config src/config/config-dev.json",
     "example-sign": "ts-node src/examples/sign/sign.ts --config src/config/config-dev.json",
+    "example-registerOperatorV3": "ts-node src/examples/ssv/registerOperatorV3.ts --config src/config/config-dev.json",
     "test": "jest --config src/config/config-dev.json",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "clean": "rm -rf dist build package",
