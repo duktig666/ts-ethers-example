@@ -1,7 +1,7 @@
 import {wallet} from '../../contracts/contract';
 import {ethers} from "ethers";
 
-const message = 'DUKTIG666';
+const message = 'ChainUpCloud||||||||||';
 
 async function sign() {
     const signature = await wallet.signMessage(message)
