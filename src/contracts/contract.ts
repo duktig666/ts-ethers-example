@@ -1,11 +1,13 @@
 import {ethers} from "ethers";
 import {config} from "../config/config";
-import {Signer} from 'ethers'
 
 const executionLayerAddr = config.executionLayerAddr;
-const provider = new ethers.providers.JsonRpcProvider(executionLayerAddr);
+const provider = new ethers.JsonRpcProvider(executionLayerAddr);
 const privateKey = config.privateKey;
+const privateKeyA = config.privateKeyA;
+const privateKeyB = config.privateKeyB;
 const wallet = new ethers.Wallet(privateKey, provider);
-const signer: Signer = wallet as Signer;
+const walletA = new ethers.Wallet(privateKeyA, provider);
+const walletB = new ethers.Wallet(privateKeyB, provider);
 
-export {provider, wallet, signer}
+export {provider, wallet, walletA, walletB}

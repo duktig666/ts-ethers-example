@@ -24,6 +24,14 @@ export const config = yargs(process.argv.slice(2))
             type: 'string',
             demandOption: true
         },
+        privateKeyA: {
+            type: 'string',
+            demandOption: true
+        },
+        privateKeyB: {
+            type: 'string',
+            demandOption: true
+        },
         // set --config default
         config: {
             type: 'string',

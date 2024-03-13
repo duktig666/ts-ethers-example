@@ -5,5 +5,7 @@
   "network": "goerli",
   "beaconNodeAddr": "",
   "executionLayerAddr": "",
-  "privateKey": ""
+  "privateKey": "",
+  "privateKeyA": "",
+  "privateKeyB": ""
 }
