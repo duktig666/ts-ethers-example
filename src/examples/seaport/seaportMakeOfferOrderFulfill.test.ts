@@ -15,13 +15,14 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
 
     const offerer = "0x892e7c8C5E716e17891ABf9395a0de1f2fc84786";
     const fulfiller = "0xe583DC38863aB4b5A94da77A6628e2119eaD4B18";
+    const seaportAddress = "0x98291a18500D6A77442ce774CE7359B0E96f0bFD";
 
     let order: OrderWithCounter;
 
     test("Making an offer createOrder", async () => {
 
         const seaport = new Seaport(walletB, {
-            overrides: {contractAddress: "0x12246eb75caF4D4FBFcE48741abC5EeDCB1c1B76"}
+            overrides: {contractAddress: seaportAddress}
         });
 
         const {executeAllActions} = await seaport.createOrder(
@@ -37,7 +38,7 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
                     {
                         itemType: ItemType.ERC721,
                         token: "0x52bA995dba1BCaA1F0d1E671E92DEa62F289B80A",
-                        identifier: "40",
+                        identifier: "42",
                         recipient: offerer,
                     },
                 ],
@@ -53,7 +54,7 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
 
     test("Making an offer fulfillOrder", async () => {
         const seaport = new Seaport(walletA, {
-            overrides: {contractAddress: "0x12246eb75caF4D4FBFcE48741abC5EeDCB1c1B76"}
+            overrides: {contractAddress: seaportAddress}
         });
 
         const {executeAllActions: executeAllFulfillActions} =

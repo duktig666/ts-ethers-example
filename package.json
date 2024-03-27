@@ -51,7 +51,7 @@
     "web3": "^1.8.1"
   },
   "dependencies": {
-    "@opensea/seaport-js": "^3.0.2",
+    "@opensea/seaport-js": "^4.0.0",
     "@openzeppelin/merkle-tree": "^1.0.2",
     "@types/jest": "^29.2.4",
     "assert": "^2.0.0",
