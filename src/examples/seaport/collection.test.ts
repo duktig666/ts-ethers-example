@@ -22,7 +22,7 @@ describe("NFT", () => {
     });
 
     test("ownerOf", async () => {
-        const result = await nftContract.ownerOf(40);
+        const result = await nftContract.ownerOf(63);
 
         console.log(result);
     });

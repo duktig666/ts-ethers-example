@@ -5,10 +5,10 @@ import {ethers} from 'ethers'
 import {describe, jest, test} from "@jest/globals";
 import type {OrderWithCounter} from '@opensea/seaport-js/lib/types'
 
-// 自定义erc20合约 t20 https://holesky.etherscan.io/address/0x9beb18563f02e19C6E875CcE3Cb0e95bDC211A87 owner 0xe583DC38863aB4b5A94da77A6628e2119eaD4B18
-// eg tx: https://holesky.etherscan.io/tx/0x45b414fb3c813918ba8be0cd3e604d37b765d20536b3995398d26b50d7f5d99f
-describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
-    jest.setTimeout(100000);
+// 1155 完全成交 https://holesky.etherscan.io/tx/0x21a33ad7e79d2a3074e72a578e1ee38edb07edb1ec1a0a500be2ede3921d3d78
+// 1155 部分成交 https://holesky.etherscan.io/tx/0x472c1e6ca0b08d6d1c8692542a9111c20ff10daa11a04b2d3ec7d44f0683206d
+describe("Listing an ERC-1155 for ETH and fulfilling it", () => {
+    jest.setTimeout(10000000);
 
     console.log("walletA account:", walletA.address)
     console.log("walletB account:", walletB.address)
@@ -19,7 +19,7 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
 
     let order: OrderWithCounter;
 
-    test("Making an offer createOrder", async () => {
+    test("Listing an ERC-1155 createOrder", async () => {
 
         const seaport = new Seaport(walletA, {
             overrides: {contractAddress: seaportAddress}
@@ -29,36 +29,43 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
             {
                 offer: [
                     {
-                        amount: ethers.parseEther("1").toString(),
-                        // t20
-                        token: "0x9beb18563f02e19C6E875CcE3Cb0e95bDC211A87",
+                        itemType: ItemType.ERC1155,
+                        token: "0xe469b8C8bC6FaD72CbaFE558787Dcc43E3FA705A",
+                        identifier: "1",
+                        amount: '5',
                     },
                 ],
                 consideration: [
                     {
-                        itemType: ItemType.ERC721,
-                        token: "0x52bA995dba1BCaA1F0d1E671E92DEa62F289B80A",
-                        identifier: "63",
+                        amount: ethers.parseEther("1").toString(),
                         recipient: offerer,
                     },
                 ],
+                allowPartialFills: true,
             },
             offerer,
+            false,
         );
 
         order = await executeAllActions();
 
-        console.log("order:", order);
+        console.log("order:", JSON.stringify(order));
     });
 
-    test("Making an offer fulfillOrder", async () => {
+    test("Listing an ERC-1155 fulfillOrder", async () => {
         const seaport = new Seaport(walletB, {
             overrides: {contractAddress: seaportAddress}
         });
 
+
+        // console.log(JSON.stringify(order))
+        // console.log(order.parameters.offer[0])
+        // order.parameters.offer[0].startAmount = '3';
+
         const {executeAllActions: executeAllFulfillActions} =
             await seaport.fulfillOrder({
                 order,
+                unitsToFill: 3,
                 accountAddress: fulfiller,
                 overrides: {
                     gasLimit: 1_000_000
@@ -74,5 +81,3 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
     });
 
 });
-
-

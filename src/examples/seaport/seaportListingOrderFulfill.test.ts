@@ -16,12 +16,12 @@ import type {OrderWithCounter} from '@opensea/seaport-js/lib/types'
 describe("Listing an ERC-721 for ETH and fulfilling it", () => {
     jest.setTimeout(10000000);
 
-    console.log("offer account:", walletA.address)
-    console.log("fulfill account:", walletB.address)
+    console.log("walletA account:", walletA.address)
+    console.log("walletB account:", walletB.address)
 
-    const offerer = "0x892e7c8C5E716e17891ABf9395a0de1f2fc84786";
-    const fulfiller = "0xe583DC38863aB4b5A94da77A6628e2119eaD4B18";
-    const seaportAddress = "0x98291a18500D6A77442ce774CE7359B0E96f0bFD";
+    const offerer = walletA.address;
+    const fulfiller = walletB.address;
+    const seaportAddress = "0x1eEe23139eea502a2A41d90D1fA0123271Bf4245";
 
     let order: OrderWithCounter;
 
@@ -48,7 +48,6 @@ describe("Listing an ERC-721 for ETH and fulfilling it", () => {
                 ],
             },
             offerer,
-            false,
         );
 
         order = await executeAllActions();
@@ -65,6 +64,9 @@ describe("Listing an ERC-721 for ETH and fulfilling it", () => {
             await seaport.fulfillOrder({
                 order,
                 accountAddress: fulfiller,
+                overrides: {
+                    gasLimit: 1_000_000
+                },
             });
 
         const tx = await executeAllFulfillActions();
