@@ -33,7 +33,6 @@ describe("Listing an ERC-1155 for ETH and fulfilling it", () => {
                         token: "0xe469b8C8bC6FaD72CbaFE558787Dcc43E3FA705A",
                         identifier: "1",
                         amount: '5',
-                        endAmount: '3',
                     },
                 ],
                 consideration: [
