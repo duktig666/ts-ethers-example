@@ -37,18 +37,20 @@ describe("Making an offer for an ERC-721 for t20 and fulfilling it", () => {
                 consideration: [
                     {
                         itemType: ItemType.ERC721,
-                        token: "0x52bA995dba1BCaA1F0d1E671E92DEa62F289B80A",
-                        identifier: "63",
+                        token: "0x5678566d017EA80205c877E8343F82E31411a2Fb",
+                        identifier: "32",
                         recipient: offerer,
                     },
                 ],
+                fees: [{recipient: "0x00dFaaE92ed72A05bC61262aA164f38B5626e106", basisPoints: 250}],
+
             },
             offerer,
         );
 
         order = await executeAllActions();
 
-        console.log("order:", order);
+        console.log("order:", JSON.stringify(order));
     });
 
     test("Making an offer fulfillOrder", async () => {

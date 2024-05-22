@@ -36,14 +36,18 @@ describe("Listing an ERC-721 for ETH and fulfilling it", () => {
                 offer: [
                     {
                         itemType: ItemType.ERC721,
-                        token: "0x52bA995dba1BCaA1F0d1E671E92DEa62F289B80A",
-                        identifier: "63",
+                        token: "0xD0C68F16C54915809dadd924a6c446Fb1c110aeA",
+                        identifier: "33",
                     },
                 ],
                 consideration: [
                     {
                         amount: ethers.parseEther("2").toString(),
                         recipient: offerer,
+                    },
+                    {
+                        amount: ethers.parseEther("0.02").toString(),
+                        recipient: "0x00dFaaE92ed72A05bC61262aA164f38B5626e106",
                     },
                 ],
             },

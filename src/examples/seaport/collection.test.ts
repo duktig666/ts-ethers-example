@@ -10,7 +10,7 @@ const NFT = [
 describe("NFT", () => {
     jest.setTimeout(30000);
 
-    const nftContract = new ethers.Contract("0x52bA995dba1BCaA1F0d1E671E92DEa62F289B80A", NFT, wallet);
+    const nftContract = new ethers.Contract("0xE24689B848AeF5aa89E47FDdFC78E100BBE6fFe3", NFT, wallet);
 
     test("isApprovedForAll", async () => {
         const result = await nftContract.isApprovedForAll(
@@ -22,7 +22,7 @@ describe("NFT", () => {
     });
 
     test("ownerOf", async () => {
-        const result = await nftContract.ownerOf(63);
+        const result = await nftContract.ownerOf(41);
 
         console.log(result);
     });
